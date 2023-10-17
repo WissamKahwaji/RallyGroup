@@ -1,0 +1,11 @@
+.sub-menu {
+  animation: sub-menu 1s forwards;
+}
+@keyframes sub-menu {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
