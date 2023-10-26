@@ -93,13 +93,18 @@ const Footer = () => {
               <div className={`flex items-center flex-col my-1`}>
                 <h5>{contactData.data.content.titleOne}</h5>
                 <span>{contactData.data.content.emailOne}</span>
-                <span>+971{contactData.data.content.mobileOne}</span>
+                <span style={{ whiteSpace: 'nowrap', fontFeatureSettings: '"tnum"' }}>
+                  +971 {contactData.data.content.mobileOne.replace(/(\d{3})(\d{3})(\d{3})/, '$1 $2 $3')}
+                </span>
               </div>
               <div className={`flex items-center flex-col my-1`}>
                 <h5>{contactData.data.content.titleTwo}</h5>
                 <span>{contactData.data.content.emailTwo}</span>
-                <span>+971{contactData.data.content.mobileTwo}</span>
+                <span style={{ whiteSpace: 'nowrap', fontFeatureSettings: '"tnum"' }}>
+                  +971 {contactData.data.content.mobileTwo.replace(/(\d{3})(\d{3})(\d{3})/, '$1 $2 $3')}
+                </span>
               </div>
+
             </div>
           </div>
         </div>

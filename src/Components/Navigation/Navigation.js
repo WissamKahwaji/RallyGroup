@@ -123,7 +123,7 @@ const Navigation = ({ onClick, isShowing }) => {
             className={`px-4 py-1 rounded-2xl text-2xl`}
             style={buttonTwoStyle}
           >
-            Palace Fleet
+            Limo Fleet
           </button>
         </li>
       </ul>
