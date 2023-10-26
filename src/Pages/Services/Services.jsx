@@ -39,7 +39,7 @@ const Services = () => {
               <div className={``}>
                 <h3
                   style={titleStyle}
-                  className={`text-xl text-center font-medium ${thirdFont["third-font"]}`}
+                  className={`text-xl text-center font-medium mt-3 mb-1 ${thirdFont["third-font"]}`}
                 >
                   {ele.title}
                 </h3>

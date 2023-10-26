@@ -112,7 +112,7 @@ const Footer = () => {
       <div className={`mt-5 md:hidden`}>
         <ul
           style={socialMediaStyle}
-          className={`flex items-center justify-evenly text-5xl my-2`}
+          className={`flex items-center justify-evenly text-5xl my-2 mx-20`}
         >
           <li className={`mx-2`}>
             <a
