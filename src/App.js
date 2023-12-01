@@ -10,14 +10,15 @@ import { servicesActions } from "./Store/servicesSlice";
 import Cars, { carsLoader } from "./Pages/Cars/Cars";
 import { contactActions } from "./Store/contactSlice";
 import Services, { servicesLoader } from "./Pages/Services/Services";
-// import Rates, { ratesLoader } from "./Pages/Rates/Rates";
 import { carActions } from "./Store/carSlice";
-import Offers from "./Pages/Offers/Offers";
+import Rates, { ratesLoader } from "./Pages/Rates/Rates";
 import { ourClientsActions } from "./Store/ourClientsSlice";
-import CategoryOne from "./Pages/Cars/CategoryOne/CategoryOne";
 import CategoryTwo from "./Pages/Cars/CategoryTwo/CategoryTwo";
+import CategoryOne from "./Pages/Cars/CategoryOne/CategoryOne";
 import About, { aboutLoader } from "./Pages/About/About";
 import LoadingPage from "./Pages/LoadingPage/LoadingPage";
+import Booking from "./Components/Booking/Booking";
+import CategoryThree from "./Pages/Cars/CategoryThree/CategoryThree";
 
 const App = () => {
   const router = createBrowserRouter([
@@ -38,8 +39,8 @@ const App = () => {
         },
         {
           path: "/rates",
-          element: <Offers />,
-          // loader: ratesLoader,
+          element: <Rates />,
+          loader: ratesLoader,
         },
         {
           path: "/cars",
@@ -49,11 +50,15 @@ const App = () => {
           children: [
             {
               index: true,
+              element: <CategoryTwo />,
+            },
+            {
+              path: "categoryOne",
               element: <CategoryOne />,
             },
             {
-              path: "categoryTwo",
-              element: <CategoryTwo />,
+              path: "categoryThree",
+              element: <CategoryThree />,
             },
           ],
         },
@@ -67,27 +72,27 @@ const App = () => {
   ]);
   const { dataColors, errorColors, isLoadingColors } = useApiFetch(
     `${baseURL}/colors`,
-    colorsActions.storeColors
+    colorsActions.storeColors,
   );
   const { dataHome, errorHome, isLoadingHome } = useApiFetch(
     `${baseURL}/home`,
-    homeActions.storeHome
+    homeActions.storeHome,
   );
   const { dataServices, errorServices, isLoadingServices } = useApiFetch(
     `${baseURL}/services`,
-    servicesActions.storeServices
+    servicesActions.storeServices,
   );
   const { dataContact, errorContact, isLoadingContact } = useApiFetch(
     `${baseURL}/contact`,
-    contactActions.storeContact
+    contactActions.storeContact,
   );
   const { dataCar, errorCar, isLoadingCar } = useApiFetch(
     `${baseURL}/carPage`,
-    carActions.storeCar
+    carActions.storeCar,
   );
   const { dataOurClients, errorOurClients, isLoadingOurClients } = useApiFetch(
     `${baseURL}/ourClients`,
-    ourClientsActions.storeOurClients
+    ourClientsActions.storeOurClients,
   );
 
   return <RouterProvider router={router} />;

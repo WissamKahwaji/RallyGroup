@@ -28,29 +28,29 @@ const Booking = () => {
     color: colorsData.data.mainColor,
   };
   return (
-    <div className={`flex flex-col h-screen`}>
+    <div id="bookNow" className={`md:flex md:h-screen md:flex-col`}>
       <PageHeadingTitle title="Booking" desc="Book Your Car Now!" />
-      <div className={`flex flex-col md:grid md:grid-cols-2 gap-x-2 flex-1`}>
-        <div className={`relative w-full h-full`}>
+      <div className={`flex flex-1 flex-col gap-x-5 md:grid md:grid-cols-3`}>
+        <div className={`relative col-span-2 flex h-full w-full flex-col`}>
           <img
             src={homeData.data.landingImg}
             alt={homeData.data.brandName}
-            className={`absolute top-0 left-0 w-full h-full object-cover rounded-lg`}
+            className={`relative left-0 top-0 h-full w-full rounded-lg object-cover`}
           />
           <span
-            className={`absolute w-full h-full bg-black bg-opacity-50`}
+            className={`absolute h-full w-full bg-black bg-opacity-50`}
           ></span>
           <div
-            className={`flex flex-col items-center justify-center z-10 w-full h-full p-2 absolute top-0 left-0`}
+            className={`absolute left-0 top-0 z-10 flex h-full w-full flex-col items-center justify-center p-2`}
           >
             <h3
               style={bookingTitleStyle}
-              className={`text-xl md:text-3xl font-semibold ${secondFont["second-font"]} mb-1 md:mb-4`}
+              className={`text-xl font-semibold md:text-3xl ${secondFont["second-font"]} mb-1 md:mb-4`}
             >
               Easy Car Rental Booking
             </h3>
             <p
-              className={`text-sm md:text-lg text-center ${thirdFont["third-font"]}`}
+              className={`text-center text-sm md:text-lg ${thirdFont["third-font"]}`}
             >
               Discover seamless car rental at your fingertips! With our
               user-friendly booking system, you can reserve standard cars or
@@ -63,7 +63,7 @@ const Booking = () => {
         <div>
           <Form
             method="post"
-            className={`grid grid-cols-2 gap-5 p-4 rounded-lg md:m-0 md:mr-2 m-2 mt-5 h-full shadow-[0px_0px_10px_1px_#D9A82E]`}
+            className={`m-2 mt-5 grid h-full grid-cols-1 gap-5 rounded-lg p-4 shadow-[0px_0px_5px_1px_#D9A82E] md:m-0 md:mr-5`}
           >
             <Input
               input={{
@@ -93,7 +93,7 @@ const Booking = () => {
                 type: "text",
               }}
             />
-            <button style={submitStyle} className={`p-1 rounded-md`}>
+            <button style={submitStyle} className={`rounded-md p-1`}>
               Submit
             </button>
           </Form>

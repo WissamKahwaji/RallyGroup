@@ -10,11 +10,11 @@ const Input = ({ input }) => {
   };
 
   const inputStyle = {
-    border: `1px solid ${colorsData.data.mainColor}`,
+    border: `1px solid #FFFFFF`,
   };
   return (
-    <div className={`flex flex-col`}>
-      <label htmlFor={input.id} style={textStyle} className={`mb-1`}>
+    <div className={`flex flex-col my-3`}>
+      <label htmlFor={input.id}  className={`mb-1 #FFFFFF`}>
         {input.title}
       </label>
       <input

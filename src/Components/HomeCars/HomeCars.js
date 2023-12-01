@@ -77,7 +77,7 @@ const HomeCars = () => {
         </Link>
         <CarouselComponent items={itemsLimo} mobileViewItems={1} />
       </div>
-      <div className={`flex flex-col mt-2`}>
+      {/* <div className={`flex flex-col mt-2`}>
         <Link
           to="/cars/categoryTwo"
           className={`px-4 py-1 rounded-2xl text-2xl mr-2 block self-start`}
@@ -86,7 +86,7 @@ const HomeCars = () => {
           Rental Cars
         </Link>
         <CarouselComponent items={itemsRental} mobileViewItems={1} />
-      </div>
+      </div> */}
       {/* <ul className={`grid grid-cols-1 md:grid-cols-3 gap-2 md:gap-10`}>
         {carData.data.categoryOneContent.map((ele) => (
           <li

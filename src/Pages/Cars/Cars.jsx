@@ -6,10 +6,6 @@ import { useSelector } from "react-redux";
 import Container from "../../Components/UI/Container";
 
 const Cars = () => {
-  const { pathname } = useLocation();
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, [pathname]);
   const data = useLoaderData();
   const colorsData = useSelector((state) => state.colorsSlice);
   const titleStyle = {
@@ -17,21 +13,27 @@ const Cars = () => {
     WebkitTextFillColor: "transparent", // Use WebkitTextFillColor instead of -webkit-text-fill-color
     WebkitBackgroundClip: "text", // Use WebkitBackgroundClip instead of -webkit-background-clip
   };
-
-  console.log(data);
+  const { pathname } = useLocation();
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
   return (
     <div className={``}>
       <div className={`relative`}>
-        <img src={data.data.img} alt={data.data.pageHeading} className={`w-full`} />
+        <img
+          src={data.data.img}
+          alt={data.data.pageHeading}
+          className={`w-full`}
+        />
         <PageHeadingTitle
-          className={`absolute top-1/2 -translate-y-1/2 left-0 p-2 rounded-r-md bg-black bg-opacity-70`}
+          className={`absolute left-0 top-1/2 -translate-y-1/2 rounded-r-md bg-black bg-opacity-70 p-2`}
           title={data.data.pageHeading}
           desc={data.data.descHeading}
         />
       </div>
       <Container className={`mt-4`}>
         <ul
-          className={`flex items-center justify-between w-full md:w-1/3 mx-auto mb-4`}
+          className={`mx-auto mb-4 flex w-full items-center justify-between md:w-1/3`}
         >
           <li>
             <NavLink
@@ -51,10 +53,22 @@ const Cars = () => {
                 color: isActive ? colorsData.data.mainColor : "white",
                 fontSize: "20px",
               })}
-              to="categoryTwo"
+              to="categoryOne"
               end={true}
             >
               Rental Cars
+            </NavLink>
+          </li>
+          <li>
+            <NavLink
+              style={({ isActive }) => ({
+                color: isActive ? colorsData.data.mainColor : "white",
+                fontSize: "20px",
+              })}
+              to="categoryThree"
+              end={true}
+            >
+              Bus Rent
             </NavLink>
           </li>
         </ul>

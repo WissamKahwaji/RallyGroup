@@ -6,7 +6,7 @@ import secondFont from "../../../SharedCSS/secondFont.module.css";
 import thirdFont from "../../../SharedCSS/thirdFont.module.css";
 import { useSelector } from "react-redux";
 import styles from "../../../SharedCSS/categoriesAnimation.module.css";
-const CategoryTwo = () => {
+const CategoryThree = () => {
   const data = useRouteLoaderData("carsRoute");
   console.log(data);
   const colorsData = useSelector((state) => state.colorsSlice);
@@ -22,7 +22,7 @@ const CategoryTwo = () => {
     <ul
       className={`flex scale-[0.9] flex-col opacity-0 ${styles["categories-animation"]}`}
     >
-      {data.data.categoryOneContent.map((ele, i) => (
+      {data.data.categoryThreeContent.map((ele, i) => (
         <li
           key={i}
           className={`flex w-full md:h-[500px] ${
@@ -76,4 +76,4 @@ const CategoryTwo = () => {
   );
 };
 
-export default CategoryTwo;
+export default CategoryThree;

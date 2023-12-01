@@ -1,11 +1,11 @@
 import React from "react";
 import { baseURL } from "../../../API/BaseURL";
-import { useRouteLoaderData } from "react-router-dom";
+import { Link, useRouteLoaderData } from "react-router-dom";
 import Container from "../../../Components/UI/Container";
 import secondFont from "../../../SharedCSS/secondFont.module.css";
 import thirdFont from "../../../SharedCSS/thirdFont.module.css";
-import { useSelector } from "react-redux";
 import styles from "../../../SharedCSS/categoriesAnimation.module.css";
+import { useSelector } from "react-redux";
 const CategoryTwo = () => {
   const data = useRouteLoaderData("carsRoute");
   console.log(data);
@@ -18,14 +18,17 @@ const CategoryTwo = () => {
   const dailyRatesStyle = {
     border: `1px solid ${colorsData.data.mainColor}`,
   };
+  const buttonOneStyle = {
+    border: `2px solid ${
+      colorsData.data ? colorsData.data.mainColor : "white"
+    }`,
+  };
   return (
-    <ul
-      className={`flex flex-col opacity-0 scale-[0.9] ${styles["categories-animation"]}`}
-    >
-      {data.data.categoryOneContent.map((ele, i) => (
+    <ul className={`flex flex-col opacity-0 ${styles["categories-animation"]}`}>
+      {data.data.categoryTwoContent.map((ele, i) => (
         <li
           key={i}
-          className={`w-full flex md:h-[500px] ${
+          className={`flex w-full md:h-[500px] ${
             i % 2 === 0
               ? "flex-col md:flex-row"
               : "flex-col md:flex-row-reverse"
@@ -34,26 +37,38 @@ const CategoryTwo = () => {
           <img
             src={ele.img}
             alt={ele.title}
-            className={`w-full md:w-[50%] h-full object-cover rounded-lg`}
+            className={`h-full w-full rounded-lg object-cover md:w-[50%]`}
           />
           <div
-            className={`w-full md:w-[50%] h-full flex flex-col items-center justify-center p-8`}
+            className={`flex h-full w-full flex-col  justify-center p-8 md:w-[50%]`}
           >
             <h3
               style={titleStyle}
-              className={`text-2xl font-semibold mb-4 ${secondFont["second-font"]}`}
+              className={`mb-4 text-center text-4xl font-semibold ${secondFont["second-font"]}`}
             >
               {ele.title}
             </h3>
-            <p
+            <ul className="flex list-disc flex-col gap-5 pl-8  md:gap-8">
+              {ele.carRate.map((rate) => (
+                <li key={rate._id}>
+                  <Link to={"/"} state={{ scrollToSection: "bookNow" }}>
+                    <div className="flex flex-row gap-3  pb-1  md:text-xl">
+                      <p>{rate.title}</p>
+                      <p>{`${rate.price} AED`}</p>
+                    </div>
+                  </Link>
+                </li>
+              ))}
+            </ul>
+            {/* <p
               className={`text-lg mb-2 ${thirdFont["third-font"]} text-center`}
             >
               {ele.desc}
-            </p>
-            {ele.carRate && (
+            </p> */}
+            {/* {ele.carRate && (
               <ul
                 style={dailyRatesStyle}
-                className={` flex justify-between items-center flex-col md:flex-row w-full p-2 rounded-md`}
+                className={` flex justify-between items-center flex-col mt-5 md:flex-row w-full p-2 rounded-md`}
               >
                 <li>
                   <span className={`text-lg`}>Daily : </span>
@@ -69,6 +84,12 @@ const CategoryTwo = () => {
                 </li>
               </ul>
             )}
+            <button
+              className={`px-4 py-1 mt-10 rounded-2xl text-2xl mr-2`}
+              style={buttonOneStyle}
+            >
+              Book Now
+            </button> */}
           </div>
         </li>
       ))}

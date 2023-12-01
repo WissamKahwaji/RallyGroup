@@ -17,7 +17,7 @@ const DateTimePicker = ({ reason }) => {
   };
 
   const inputStyle = {
-    border: `1px solid ${colorsData.data.mainColor}`,
+    border: `1px solid #FFFFFF`,
     background: "transparent",
     color: "white",
     padding: "0.25rem",
@@ -28,7 +28,7 @@ const DateTimePicker = ({ reason }) => {
 
   return (
     <div className={`text-black`}>
-      <label style={textStyle} className={`mb-1`}>
+      <label className={`mb-1 text-white`}>
         Select a Date and Time for {reason}:
       </label>
       <Datetime

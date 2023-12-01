@@ -41,11 +41,11 @@ const Navigation = ({ onClick, isShowing }) => {
   };
   return (
     <div
-      className={`absolute  top-0 h-screen bg-black w-2/3 md:w-[25%] ${
+      className={`absolute  top-0 h-screen w-2/3 bg-black md:w-[25%] ${
         isShowing ? "right-0" : "-right-[500px]"
       } duration-300`}
     >
-      <div className={`flex justify-end pt-5 pr-10 text-2xl`}>
+      <div className={`flex justify-end pr-10 pt-5 text-2xl`}>
         <AiOutlineClose
           style={exitButtonStyle}
           className={`cursor-pointer`}
@@ -56,13 +56,13 @@ const Navigation = ({ onClick, isShowing }) => {
         <img src={homeData.data.logoImg} alt={homeData.data.brandName} />
       </div>
       <ul className={`flex flex-col items-center justify-center`}>
-        <li className={`py-2 text-2xl w-full text-center`}>
+        <li className={`w-full py-2 text-center text-2xl`}>
           <Link to="/">Home</Link>
         </li>
-        <li className={`py-2 text-2xl w-full text-center`}>
+        <li className={`w-full py-2 text-center text-2xl`}>
           <Link to="/services">Services</Link>
         </li>
-        <li
+        {/* <li
           className={`py-2 text-2xl relative w-full text-center`}
           onMouseEnter={onMouseEnterHandler}
           onMouseLeave={onMouseLeaveHandler}
@@ -88,7 +88,7 @@ const Navigation = ({ onClick, isShowing }) => {
             </li>
           </ul>
 
-          {/* <label htmlFor="selectBox" className={`mb-2`}>
+          <label htmlFor="selectBox" className={`mb-2`}>
           </label>
           <select
             id="selectBox"
@@ -101,29 +101,35 @@ const Navigation = ({ onClick, isShowing }) => {
             <option value="option2">
               <Link>Rental Cars</Link>
             </option>
-          </select> */}
-          {/* <Link to="/cars">Cars</Link> */}
-        </li>
+          </select>
+          <Link to="/cars">Cars</Link>
+        </li> */}
         {/* <li className={`py-2 text-2xl`}>
           <Link to="/rates">Offers</Link>
         </li> */}
-        <li className={`py-2 text-2xl w-full text-center`}>
+        <li className={`w-full py-2 text-center text-2xl`}>
           <Link to="/about">About</Link>
         </li>
-        <li className={`py-2 w-full text-center`}>
+        <li className={`w-full py-2 text-center text-2xl`}>
+          <Link to="/rates">Rates</Link>
+        </li>
+        <li className={`w-full py-2 text-center text-2xl`}>
+          <Link to="/">Inquiries</Link>
+        </li>
+        <li className={`w-full py-2 text-center`}>
           <button
-            className={`px-2 py-1 rounded-2xl text-2xl mr-2`}
+            className={`mr-2 rounded-2xl px-2 py-1 text-2xl`}
             style={buttonOneStyle}
           >
             Book Now
           </button>
         </li>
-        <li className={`py-4 w-full text-center`}>
+        <li className={`w-full py-4 text-center`}>
           <button
-            className={`px-4 py-1 rounded-2xl text-2xl`}
+            className={`rounded-2xl px-4 py-1 text-2xl`}
             style={buttonTwoStyle}
           >
-            Limo Fleet
+            Rally Fleet
           </button>
         </li>
       </ul>
