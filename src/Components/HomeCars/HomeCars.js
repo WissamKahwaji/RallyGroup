@@ -4,8 +4,10 @@ import PageHeadingTitle from "../UI/PageHeadingTitle";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import CarouselComponent from "../UI/CarouselComponent";
+import useSelectDataDependOnLang from "../../Hooks/useSelectDataDependOnLang";
 
 const HomeCars = () => {
+  const { handleSelectDataDependOnLang, t } = useSelectDataDependOnLang();
   const carData = useSelector((state) => state.carSlice);
   console.log(carData);
   const colorsData = useSelector((state) => state.colorsSlice);
@@ -15,7 +17,7 @@ const HomeCars = () => {
     WebkitBackgroundClip: "text", // Use WebkitBackgroundClip instead of -webkit-background-clip
   };
   const truncateText = (text) => {
-    if (text.length > 60) {
+    if (text?.length > 60) {
       return text.slice(0, 30) + " ...";
     }
     return text;
@@ -23,13 +25,13 @@ const HomeCars = () => {
 
   const itemsRental = carData.data.categoryOneContent.map((ele) => (
     <li
-      className={`flex items-center flex-col justify-center p-2 rounded-lg h-[400px]`}
+      className={`flex h-[400px] flex-col items-center justify-center rounded-lg p-2`}
       key={ele._i}
     >
       <img
         src={ele.img}
         alt={ele.title}
-        className={`rounded-lg h-[70%] w-full object-c`}
+        className={`object-c h-[70%] w-full rounded-lg`}
       />
       <div className={`mt-2 `}>
         <p style={titleStyle} className={`text-xl`}>
@@ -42,19 +44,21 @@ const HomeCars = () => {
 
   const itemsLimo = carData.data.categoryTwoContent.map((ele) => (
     <li
-      className={`flex items-center flex-col justify-center p-2 rounded-lg h-[400px]`}
+      className={`flex h-[400px] flex-col items-center justify-center rounded-lg p-2`}
       key={ele._i}
     >
       <img
         src={ele.img}
         alt={ele.title}
-        className={`rounded-lg h-[70%] w-full object-cover`}
+        className={`h-[70%] w-full rounded-lg object-cover`}
       />
       <div className={`mt-2 `}>
         <p style={titleStyle} className={`text-xl`}>
           {ele.title}
         </p>
-        <p className={``}>{truncateText(ele.desc)}</p>
+        <p className={``}>
+          {truncateText(handleSelectDataDependOnLang(ele, "desc"))}
+        </p>
       </div>
     </li>
   ));
@@ -63,17 +67,20 @@ const HomeCars = () => {
   };
   return (
     <Container>
-      <PageHeadingTitle title="Cars" desc="Check Our Cars" />
-      <Link to="/cars" className={`block text-3xl mb-4 text-center underline`}>
-        Find Out More
+      <PageHeadingTitle
+        title={t("pages.home.cars.sectionHead.title")}
+        desc={t("pages.home.cars.sectionHead.title")}
+      />
+      <Link to="/cars" className={`mb-4 block text-center text-3xl underline`}>
+        {t("common.findOutMore")}
       </Link>
-      <div className={`flex flex-col mt-2`}>
+      <div className={`mt-2 flex flex-col`}>
         <Link
           to="/cars"
-          className={`px-4 py-1 rounded-2xl text-2xl mr-2 block self-start`}
+          className={`mr-2 block self-start rounded-2xl px-4 py-1 text-2xl`}
           style={buttonOneStyle}
         >
-          Limo Cars
+          {t("pages.home.cars.limo")}{" "}
         </Link>
         <CarouselComponent items={itemsLimo} mobileViewItems={1} />
       </div>

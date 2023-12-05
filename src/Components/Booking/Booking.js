@@ -8,7 +8,9 @@ import PageHeadingTitle from "../UI/PageHeadingTitle";
 import { useSelector } from "react-redux";
 import secondFont from "../../SharedCSS/secondFont.module.css";
 import thirdFont from "../../SharedCSS/thirdFont.module.css";
+import { useTranslation } from "react-i18next";
 const Booking = () => {
+  const { t } = useTranslation();
   const [selectedDuration, setSelectedDuration] = useState("1"); // Default duration value (1 day)
   const colorsData = useSelector((state) => state.colorsSlice);
 
@@ -29,8 +31,13 @@ const Booking = () => {
   };
   return (
     <div id="bookNow" className={`md:flex md:h-screen md:flex-col`}>
-      <PageHeadingTitle title="Booking" desc="Book Your Car Now!" />
-      <div className={`flex flex-1 flex-col gap-x-5 md:grid md:grid-cols-3`}>
+      <PageHeadingTitle
+        title={t("pages.home.rentCarBooking.sectionHead.title")}
+        desc={t("pages.home.rentCarBooking.sectionHead.desc")}
+      />
+      <div
+        className={`mx-1 flex flex-1 flex-col gap-x-5 md:grid md:grid-cols-3`}
+      >
         <div className={`relative col-span-2 flex h-full w-full flex-col`}>
           <img
             src={homeData.data.landingImg}
@@ -45,18 +52,14 @@ const Booking = () => {
           >
             <h3
               style={bookingTitleStyle}
-              className={`text-xl font-semibold md:text-3xl ${secondFont["second-font"]} mb-1 md:mb-4`}
+              className={`text-xl font-semibold capitalize md:text-3xl ${secondFont["second-font"]} mb-1 md:mb-4`}
             >
-              Easy Car Rental Booking
+              {t("pages.home.rentCarBooking.title")}
             </h3>
             <p
-              className={`text-center text-sm md:text-lg ${thirdFont["third-font"]}`}
+              className={`text-center text-sm first-letter:capitalize md:text-lg ${thirdFont["third-font"]}`}
             >
-              Discover seamless car rental at your fingertips! With our
-              user-friendly booking system, you can reserve standard cars or
-              luxurious limousines in just a few clicks. Choose your vehicle,
-              select dates, and book with confidence. Your next adventure begins
-              here.
+              {t("pages.home.rentCarBooking.desc")}
             </p>
           </div>
         </div>
@@ -67,34 +70,38 @@ const Booking = () => {
           >
             <Input
               input={{
-                title: "Enter The Pick Up Location",
+                title: t("pages.home.rentCarBooking.form.pickUp.location"),
                 type: "text",
               }}
             />
             <Input
               input={{
-                title: "Enter The Drop Off Location",
+                title: t("pages.home.rentCarBooking.form.dropOff.location"),
                 type: "text",
               }}
             />
-            <DateTimePicker reason="Pick Up" />
-            <DateTimePicker reason="Return" />
+            <DateTimePicker
+              label={t("pages.home.rentCarBooking.form.pickUp.date")}
+            />
+            <DateTimePicker
+              label={t("pages.home.rentCarBooking.form.dropOff.date")}
+            />
 
             {/* <Input/> */}
             <Input
               input={{
-                title: "Enter Your Name",
+                title: t("pages.home.rentCarBooking.form.name"),
                 type: "text",
               }}
             />
             <Input
               input={{
-                title: "Enter Your Mail ID",
+                title: t("pages.home.rentCarBooking.form.mailID"),
                 type: "text",
               }}
             />
             <button style={submitStyle} className={`rounded-md p-1`}>
-              Submit
+              {t("pages.home.rentCarBooking.form.submit")}
             </button>
           </Form>
         </div>

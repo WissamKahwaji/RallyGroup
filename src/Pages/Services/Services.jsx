@@ -6,9 +6,13 @@ import { useSelector } from "react-redux";
 import secondFont from "../../SharedCSS/secondFont.module.css";
 import thirdFont from "../../SharedCSS/thirdFont.module.css";
 import Container from "../../Components/UI/Container";
+import useSelectDataDependOnLang from "../../Hooks/useSelectDataDependOnLang";
+
 const Services = () => {
+  const { handleSelectDataDependOnLang, t } = useSelectDataDependOnLang();
+
   const data = useLoaderData();
-  console.log(data.data.content);
+
   const colorsData = useSelector((state) => state.colorsSlice);
   const titleStyle = {
     color: colorsData.data.mainColor,
@@ -21,8 +25,8 @@ const Services = () => {
     <div className={`mt-32 min-h-screen`}>
       <PageHeadingTitle
         className={`!mb-4`}
-        title={data.data.pageHeading}
-        desc={data.data.descHeading}
+        title={handleSelectDataDependOnLang(data.data, "pageHeading")}
+        desc={handleSelectDataDependOnLang(data.data, "descHeading")}
       />
       <Container>
         <ul className={`mt-20 flex flex-col `}>
@@ -47,28 +51,27 @@ const Services = () => {
                     style={titleStyle}
                     className={`mb-1 mt-3 text-center text-3xl font-medium ${thirdFont["third-font"]}`}
                   >
-                    {ele.title}
+                    {handleSelectDataDependOnLang(ele, "title")}
                   </h3>
-                  <p className={`text-center text-lg font-light`}>{ele.desc}</p>
+                  <p className={`text-center text-lg font-light`}>
+                    {handleSelectDataDependOnLang(ele, "desc")}
+                  </p>
                   {(ele.title === "Rent" ||
                     ele.title === "Ultra Limo Fleet" ||
                     ele.title === "Bus Rent") && (
                     <div>
-                      <p>
-                        To see more{" "}
-                        <Link
-                          to={
-                            ele.title === "Rent"
-                              ? "../cars/categoryOne"
-                              : ele.title === "Ultra Limo Fleet"
-                                ? "../cars"
-                                : "../cars/categoryThree"
-                          }
-                          className="underline"
-                        >
-                          click here
-                        </Link>
-                      </p>
+                      <Link
+                        to={
+                          ele.title === "Rent"
+                            ? "../cars/categoryOne"
+                            : ele.title === "Ultra Limo Fleet"
+                              ? "../cars"
+                              : "../cars/categoryThree"
+                        }
+                        className="underline"
+                      >
+                        {t("common.findOutMore")}{" "}
+                      </Link>
                     </div>
                   )}
                 </div>

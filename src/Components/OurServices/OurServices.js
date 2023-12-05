@@ -3,8 +3,10 @@ import Container from "../UI/Container";
 import { useSelector } from "react-redux";
 import PageHeadingTitle from "../UI/PageHeadingTitle";
 import { Link } from "react-router-dom";
+import useSelectDataDependOnLang from "../../Hooks/useSelectDataDependOnLang";
 
 const OurServices = () => {
+  const { handleSelectDataDependOnLang, t } = useSelectDataDependOnLang();
   const servicesData = useSelector((state) => state.servicesSlice);
   const colorsData = useSelector((state) => state.colorsSlice);
   const serviceItem = {
@@ -27,33 +29,35 @@ const OurServices = () => {
   return (
     <Container>
       <PageHeadingTitle
-        title={servicesData.data.pageHeading}
-        desc={servicesData.data.descHeading}
+        title={t("common.services")}
+        desc={handleSelectDataDependOnLang(servicesData.data, "descHeading")}
       />
       <Link
         to="/services"
-        className={`block text-3xl my-4 text-center underline`}
+        className={`my-4 block text-center text-3xl capitalize underline`}
       >
-        Find Out More
+        {t("common.findOutMore")}
       </Link>
       <ul
-        className={`w-[80%] mx-auto grid grid-cols-1 md:grid-cols-3 gap-2 md:gap-5 mt-10`}
+        className={`mx-auto mt-10 grid w-[80%] grid-cols-1 gap-2 md:grid-cols-3 md:gap-5`}
       >
         {servicesData.data.content.slice(0, 3).map((ele, i) => (
-          <li key={ele._id} className={`h-[400px] flex items-center flex-col`}>
-            <div className={`relative block w-full h-[200px]`}>
+          <li key={ele._id} className={`flex h-[400px] flex-col items-center`}>
+            <div className={`relative block h-[200px] w-full`}>
               {/* <div className={`absolute w-full h-full top-0 left-0`}></div> */}
               <img
                 src={ele.img}
                 alt={ele.desc}
-                className={`absolute w-full h-full object-cover rounded-lg `}
+                className={`absolute h-full w-full rounded-lg object-cover `}
               />
             </div>
-            <div style={serviceItem} className={`p-2 rounded-lg text-center`}>
+            <div style={serviceItem} className={`rounded-lg p-2 text-center`}>
               <h3 style={serviceItemTitle} className={`text-2xl `}>
-                {ele.title}
+                {handleSelectDataDependOnLang(ele, "title")}
               </h3>
-              <p className={``}>{truncateText(ele.desc)}</p>
+              <p className={``}>
+                {truncateText(handleSelectDataDependOnLang(ele, "desc"))}
+              </p>
             </div>
             {/* <div className={`relative block w-full h-full`}>
               <div className={`absolute w-full h-full top-0 left-0`}>

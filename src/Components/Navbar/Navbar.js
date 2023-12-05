@@ -1,14 +1,17 @@
 import React, { useEffect, useState } from "react";
-import Container from "../UI/Container";
-import { RxHamburgerMenu } from "react-icons/rx";
 import { useSelector } from "react-redux";
+import { RxHamburgerMenu } from "react-icons/rx";
+import { useTranslation } from "react-i18next";
+import Container from "../UI/Container";
 import Navigation from "../Navigation/Navigation";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import useNavigateToBook from "../../Hooks/useNavigateToBook";
+import SelectLang from "../UI/SelectLang";
+import { NAV_LINKS } from "../../constant/navLinks";
 
 const Navbar = ({ data }) => {
+  const { t } = useTranslation();
   const colorsData = useSelector((state) => state.colorsSlice);
-  const navigate = useNavigate();
   const handleNavigateToBookSection = useNavigateToBook();
   console.log(colorsData);
   const buttonOneStyle = {
@@ -45,40 +48,29 @@ const Navbar = ({ data }) => {
             className={`w-32 md:w-52`}
           />
         </Link>
-        <div className={`hidden md:flex`}>
-          <Link className={`mr-10 text-2xl`} to="/">
-            Home
-          </Link>
-          <Link className={`mr-10 text-2xl`} to="/services">
-            Services
-          </Link>
-          <Link className={`mr-10 text-2xl`} to="/about">
-            About
-          </Link>
-          <Link className={`mr-10 text-2xl`} to="/rates">
-            Rates
-          </Link>
-          <Link className={`mr-10 text-2xl`} to="/">
-            Inquiries
-          </Link>
+        <div className={`hidden gap-5 md:flex`}>
+          {NAV_LINKS.map((link) => (
+            <Link className="text-2xl capitalize " to={link.href}>
+              {t(link.title)}
+            </Link>
+          ))}
         </div>
-        <div className={`hidden md:block`}>
+        <div className={`hidden flex-row gap-2 md:flex`}>
           <button
-            className={`mr-2 rounded-2xl px-4 py-1 text-2xl`}
+            className={` rounded-2xl px-4 py-1 text-2xl`}
             style={buttonOneStyle}
             onClick={handleNavigateToBookSection}
           >
-            Book Now
+            {t("common.bookNow")}
           </button>
           <button
-            className={`rounded-2xl px-4 py-1 text-2xl`}
+            className={`rounded-2xl px-4 py-1 text-2xl capitalize`}
             style={buttonTwoStyle}
-            onClick={() => navigate("/cars")}
           >
-            Rally Fleet
+            {t("common.brand")}
           </button>
         </div>
-
+        <SelectLang />
         <div className={`flex md:hidden`}>
           <RxHamburgerMenu
             className={`cursor-pointer text-5xl md:hidden`}

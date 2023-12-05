@@ -14,7 +14,13 @@ import {
 import { FaXTwitter } from "react-icons/fa6";
 import { Link } from "react-router-dom";
 import { BsWhatsapp } from "react-icons/bs";
+import { FOOTER_NAV_LINKS } from "../../constant/navLinks";
+import { useTranslation } from "react-i18next";
+import useSelectDataDependOnLang from "../../Hooks/useSelectDataDependOnLang";
+
 const Footer = () => {
+  const { handleSelectDataDependOnLang, t } = useSelectDataDependOnLang();
+
   const contactData = useSelector((state) => state.contactSlice);
   const colorsData = useSelector((state) => state.colorsSlice);
   const homeData = useSelector((state) => state.homeSlice);
@@ -28,34 +34,27 @@ const Footer = () => {
   return (
     <Container
       style={footerStyle}
-      className={`w-full mt-10 py-4 flex flex-col md:flex-row md:justify-between`}
+      className={`mt-10 flex w-full flex-col py-4 md:flex-row md:justify-between`}
     >
-      <div className={`flex items-center md:w-1/2 flex-row`}>
+      <div className={`flex flex-row items-center md:w-1/2`}>
         <ul
-          className={`flex items-start justify-between md:justify-center flex-wrap flex-col w-full md:w-auto`}
+          className={`flex w-full flex-col flex-wrap items-start justify-between md:w-auto md:justify-center`}
         >
-          <li className={`py-1 md:py-2 text-lg md:text-2xl underline`}>
-            <Link to="/">Home</Link>
-          </li>
-          <li className={`py-1 md:py-2  text-lg md:text-2xl underline`}>
-            <Link to="/services">Services</Link>
-          </li>
-          <li className={`py-1 md:py-2  text-lg md:text-2xl underline`}>
-            <Link to="/cars">Cars</Link>
-          </li>
-          <li className={`py-1 md:py-2 text-lg md:text-2xl underline`}>
-            <Link to="/rates">Rates</Link>
-          </li>
-          <li className={`py-1 md:py-2 text-lg md:text-2xl underline`}>
-            <Link to="/about">About</Link>
-          </li>
+          {FOOTER_NAV_LINKS.map((nav, index) => (
+            <li
+              key={index}
+              className={`py-1 text-lg underline md:py-2 md:text-2xl`}
+            >
+              <Link to={nav.href}>{t(nav.title)}</Link>
+            </li>
+          ))}
         </ul>
         <div
-          className={`flex items-center justify-center flex-col-reverse mt-4 md:mt-0 flex-1`}
+          className={`mt-4 flex flex-1 flex-col-reverse items-center justify-center md:mt-0`}
         >
           <ul
             style={socialMediaStyle}
-            className={`md:flex items-center justify-between text-5xl my-2  hidden`}
+            className={`my-2 hidden items-center justify-between text-5xl  md:flex`}
           >
             <li className={`mx-2`}>
               <a
@@ -85,26 +84,53 @@ const Footer = () => {
               </a>
             </li>
           </ul>
-          <div className={`flex items-center justify-center flex-col mt-2`}>
+          <div className={`mt-2 flex flex-col items-center justify-center`}>
             <div>
               <p className={`my-1`}>{contactData.data.content.email}</p>
             </div>
-            <div className={` flex flex-col mt-2 my-1`}>
-              <div className={`flex items-center flex-col my-1`}>
-                <h5>{contactData.data.content.titleOne}</h5>
+            <div className={` my-1 mt-2 flex flex-col`}>
+              <div className={`my-1 flex flex-col items-center`}>
+                <h5>
+                  {handleSelectDataDependOnLang(
+                    contactData.data.content,
+                    "titleOne",
+                  )}
+                </h5>
                 <span>{contactData.data.content.emailOne}</span>
-                <span style={{ whiteSpace: 'nowrap', fontFeatureSettings: '"tnum"' }}>
-                  +971 {contactData.data.content.mobileOne.replace(/(\d{3})(\d{3})(\d{3})/, '$1 $2 $3')}
+                <span
+                  style={{
+                    whiteSpace: "nowrap",
+                    fontFeatureSettings: '"tnum"',
+                  }}
+                >
+                  +971{" "}
+                  {contactData.data.content.mobileOne.replace(
+                    /(\d{3})(\d{3})(\d{3})/,
+                    "$1 $2 $3",
+                  )}
                 </span>
               </div>
-              <div className={`flex items-center flex-col my-1`}>
-                <h5>{contactData.data.content.titleTwo}</h5>
+              <div className={`my-1 flex flex-col items-center`}>
+                <h5>
+                  {handleSelectDataDependOnLang(
+                    contactData.data.content,
+                    "titleTwo",
+                  )}
+                </h5>
                 <span>{contactData.data.content.emailTwo}</span>
-                <span style={{ whiteSpace: 'nowrap', fontFeatureSettings: '"tnum"' }}>
-                  +971 {contactData.data.content.mobileTwo.replace(/(\d{3})(\d{3})(\d{3})/, '$1 $2 $3')}
+                <span
+                  style={{
+                    whiteSpace: "nowrap",
+                    fontFeatureSettings: '"tnum"',
+                  }}
+                >
+                  +971{" "}
+                  {contactData.data.content.mobileTwo.replace(
+                    /(\d{3})(\d{3})(\d{3})/,
+                    "$1 $2 $3",
+                  )}
                 </span>
               </div>
-
             </div>
           </div>
         </div>
@@ -112,7 +138,7 @@ const Footer = () => {
       <div className={`mt-5 md:hidden`}>
         <ul
           style={socialMediaStyle}
-          className={`flex items-center justify-evenly text-5xl my-2 mx-20`}
+          className={`mx-20 my-2 flex items-center justify-evenly text-5xl`}
         >
           <li className={`mx-2`}>
             <a
@@ -144,7 +170,7 @@ const Footer = () => {
         </ul>
       </div>
       <div
-        className={`flex items-center justify-center md:flex-col mt-10 md:mt-0 md:w-1/2`}
+        className={`mt-10 flex items-center justify-center md:mt-0 md:w-1/2 md:flex-col`}
       >
         <img
           src={homeData.data.logoImg}
@@ -153,12 +179,12 @@ const Footer = () => {
         />
         <div className={``}>
           <h3
-            className={`text-center text-lg md:text-5xl mb-4  font-semibold ${secondFont["second-font"]}`}
+            className={`mb-4 text-center text-lg font-semibold  md:text-5xl ${secondFont["second-font"]}`}
           >
             {homeData.data.brandName}
           </h3>
           <p
-            className={`text-xs md:text-lg font-medium ${thirdFont["third-font"]} text-center`}
+            className={`text-xs font-medium md:text-lg ${thirdFont["third-font"]} text-center`}
           >
             {homeData.data.brandDesc}
           </p>

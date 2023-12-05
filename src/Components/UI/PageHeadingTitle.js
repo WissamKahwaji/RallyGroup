@@ -10,14 +10,18 @@ const PageHeadingTitle = ({ title, desc, className }) => {
     WebkitBackgroundClip: "text", // Use WebkitBackgroundClip instead of -webkit-background-clip
   };
   return (
-    <div className={`text-center mt-5 md:mt-10 mb-5 md:mb-10 ${className}`}>
+    <div className={`mb-5 mt-5 text-center md:mb-10 md:mt-10 ${className}`}>
       <h2
         style={headingTitleStyle}
-        className={`text-2xl md:text-5xl mb-1 md:mb-4  font-semibold ${secondFont["second-font"]}`}
+        className={`mb-1 text-2xl font-semibold md:mb-4  md:text-5xl ${secondFont["second-font"]}`}
       >
         {title}
       </h2>
-      <p className={`text-base md:text-lg font-medium ${thirdFont["third-font"]} md:w-[70%] mx-auto w-full`}>{desc}</p>
+      <p
+        className={`text-base font-medium md:text-lg rtl:md:text-2xl ${thirdFont["third-font"]} mx-auto w-full md:w-[70%]`}
+      >
+        {desc}
+      </p>
     </div>
   );
 };

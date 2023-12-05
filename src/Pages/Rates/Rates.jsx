@@ -5,8 +5,11 @@ import secondFont from "../../SharedCSS/secondFont.module.css";
 import thirdFont from "../../SharedCSS/thirdFont.module.css";
 import Container from "../../Components/UI/Container";
 import PageHeadingTitle from "../../Components/UI/PageHeadingTitle";
+import useSelectDataDependOnLang from "../../Hooks/useSelectDataDependOnLang";
 
 const Rates = () => {
+  const { handleSelectDataDependOnLang, t } = useSelectDataDependOnLang();
+
   const data = useLoaderData();
   const { pathname } = useLocation();
 
@@ -29,13 +32,13 @@ const Rates = () => {
           className={`absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2`}
         >
           <h2 className={`text-5xl ${thirdFont["third-font"]}`}>
-            {data.data.pageHeading}
+            {handleSelectDataDependOnLang(data.data, "pageHeading")}
           </h2>
           <p></p>
         </div>
       </div>
       <Container className={`mt-10 `}>
-        <PageHeadingTitle title="Our Rates" />
+        <PageHeadingTitle title={t("pages.rates.sectionHead.title")} />
         <ul className="flex flex-col gap-12">
           {data.data.content.map((car) => (
             <li
@@ -50,7 +53,7 @@ const Rates = () => {
                 />
               </div>
 
-              <div className="flex flex-col gap-16 py-5">
+              <div className="flex flex-col gap-16 py-5 rtl:mr-10">
                 <p className=" text-center  text-2xl md:text-4xl  ">
                   {car.title}
                 </p>
@@ -59,8 +62,11 @@ const Rates = () => {
                     <li key={rate._id}>
                       <Link to={"/"} state={{ scrollToSection: "bookNow" }}>
                         <div className="flex flex-row gap-3  pb-1  md:text-xl">
-                          <p>{rate.title}</p>
-                          <p>{`${rate.price} AED`}</p>
+                          <p>{handleSelectDataDependOnLang(rate, "title")}</p>
+                          <p className="flex gap-1">
+                            <span>{rate.price}</span>
+                            <span>{t("common.currency")}</span>
+                          </p>
                         </div>
                       </Link>
                     </li>

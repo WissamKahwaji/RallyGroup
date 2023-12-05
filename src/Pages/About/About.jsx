@@ -8,7 +8,9 @@ import thirdFont from "../../SharedCSS/thirdFont.module.css";
 import { useSelector } from "react-redux";
 import Driver from "../../Components/Driver/Driver";
 import { handleBreakParagraphToLines } from "../../utils";
+import useSelectDataDependOnLang from "../../Hooks/useSelectDataDependOnLang";
 const About = () => {
+  const { handleSelectDataDependOnLang } = useSelectDataDependOnLang();
   const colorsData = useSelector((state) => state.colorsSlice);
   const headingTitleStyle = {
     background: `${colorsData.data.linear}`,
@@ -21,7 +23,6 @@ const About = () => {
   }, [pathname]);
 
   const data = useLoaderData();
-  console.log(data.data.content[0].desc);
   return (
     <Container>
       {/* <PageHeadingTitle
@@ -47,12 +48,14 @@ const About = () => {
                 style={headingTitleStyle}
                 className={`text-3xl sm:text-4xl md:text-5xl lg:text-6xl ${secondFont["second-font"]} mb-14`}
               >
-                {ele.secTitle}
+                {handleSelectDataDependOnLang(ele, "secTitle")}
               </h2>
               <p
                 className={`mt-4 md:text-xl`}
                 dangerouslySetInnerHTML={{
-                  __html: handleBreakParagraphToLines(ele.desc),
+                  __html: handleBreakParagraphToLines(
+                    handleSelectDataDependOnLang(ele, "desc"),
+                  ),
                 }}
               ></p>
             </div>
@@ -60,7 +63,7 @@ const About = () => {
         ))}
       </ul>
       <Driver
-        title={data.data.secondeTitle}
+        title={handleSelectDataDependOnLang(data.data, "secondeTitle")}
         driverImgs={data.data.secondSectionImgs}
       />
     </Container>

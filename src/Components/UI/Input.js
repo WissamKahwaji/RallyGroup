@@ -13,14 +13,14 @@ const Input = ({ input }) => {
     border: `1px solid #FFFFFF`,
   };
   return (
-    <div className={`flex flex-col my-3`}>
-      <label htmlFor={input.id}  className={`mb-1 #FFFFFF`}>
+    <div className={`my-3 flex flex-col`}>
+      <label htmlFor={input.id} className={`#FFFFFF mb-1 capitalize`}>
         {input.title}
       </label>
       <input
         {...input}
         style={inputStyle}
-        className={`bg-transparent rounded-md p-1 outline-none`}
+        className={`rounded-md bg-transparent p-1 outline-none`}
       />
     </div>
   );

@@ -5,8 +5,12 @@ import Container from "../../../Components/UI/Container";
 import secondFont from "../../../SharedCSS/secondFont.module.css";
 import thirdFont from "../../../SharedCSS/thirdFont.module.css";
 import styles from "../../../SharedCSS/categoriesAnimation.module.css";
+import useSelectDataDependOnLang from "../../../Hooks/useSelectDataDependOnLang";
+
 import { useSelector } from "react-redux";
 const CategoryTwo = () => {
+  const { handleSelectDataDependOnLang, t } = useSelectDataDependOnLang();
+
   const data = useRouteLoaderData("carsRoute");
   console.log(data);
   const colorsData = useSelector((state) => state.colorsSlice);
@@ -53,8 +57,11 @@ const CategoryTwo = () => {
                 <li key={rate._id}>
                   <Link to={"/"} state={{ scrollToSection: "bookNow" }}>
                     <div className="flex flex-row gap-3  pb-1  md:text-xl">
-                      <p>{rate.title}</p>
-                      <p>{`${rate.price} AED`}</p>
+                      <p>{handleSelectDataDependOnLang(rate, "title")}</p>
+                      <p className="flex gap-1">
+                        <span>{rate.price}</span>
+                        <span>{t("common.currency")}</span>
+                      </p>
                     </div>
                   </Link>
                 </li>

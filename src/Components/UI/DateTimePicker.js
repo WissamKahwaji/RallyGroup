@@ -3,7 +3,7 @@ import Datetime from "react-datetime";
 import "react-datetime/css/react-datetime.css";
 import { useSelector } from "react-redux";
 
-const DateTimePicker = ({ reason }) => {
+const DateTimePicker = ({ label }) => {
   const [selectedDateTime, setSelectedDateTime] = useState(new Date());
 
   const handleDateTimeChange = (moment) => {
@@ -28,9 +28,7 @@ const DateTimePicker = ({ reason }) => {
 
   return (
     <div className={`text-black`}>
-      <label className={`mb-1 text-white`}>
-        Select a Date and Time for {reason}:
-      </label>
+      <label className={`mb-1 capitalize text-white`}>{label}</label>
       <Datetime
         // className={`bg-transparent rounded-md`}
         // input={false}

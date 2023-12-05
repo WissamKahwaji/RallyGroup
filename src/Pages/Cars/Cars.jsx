@@ -4,16 +4,24 @@ import { NavLink, Outlet, useLoaderData, useLocation } from "react-router-dom";
 import PageHeadingTitle from "../../Components/UI/PageHeadingTitle";
 import { useSelector } from "react-redux";
 import Container from "../../Components/UI/Container";
+import { useTranslation } from "react-i18next";
 
 const Cars = () => {
+  const { t } = useTranslation();
   const data = useLoaderData();
   const colorsData = useSelector((state) => state.colorsSlice);
+
   const titleStyle = {
     background: `${colorsData.data.linear}`,
     WebkitTextFillColor: "transparent", // Use WebkitTextFillColor instead of -webkit-text-fill-color
     WebkitBackgroundClip: "text", // Use WebkitBackgroundClip instead of -webkit-background-clip
   };
   const { pathname } = useLocation();
+  const CARS_CATEGORIES = [
+    { title: "pages.cars.limo", href: "/" },
+    { title: "pages.cars.rentalCars", href: "categoryOne" },
+    { title: "pages.cars.busRent", href: "categoryThree" },
+  ];
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [pathname]);
@@ -35,42 +43,21 @@ const Cars = () => {
         <ul
           className={`mx-auto mb-4 flex w-full items-center justify-between md:w-1/3`}
         >
-          <li>
-            <NavLink
-              style={({ isActive }) => ({
-                color: isActive ? colorsData.data.mainColor : "white",
-                fontSize: "20px",
-              })}
-              to=""
-              end={true}
-            >
-              Limo Cars
-            </NavLink>
-          </li>
-          <li>
-            <NavLink
-              style={({ isActive }) => ({
-                color: isActive ? colorsData.data.mainColor : "white",
-                fontSize: "20px",
-              })}
-              to="categoryOne"
-              end={true}
-            >
-              Rental Cars
-            </NavLink>
-          </li>
-          <li>
-            <NavLink
-              style={({ isActive }) => ({
-                color: isActive ? colorsData.data.mainColor : "white",
-                fontSize: "20px",
-              })}
-              to="categoryThree"
-              end={true}
-            >
-              Bus Rent
-            </NavLink>
-          </li>
+          {CARS_CATEGORIES.map((carCategory, index) => (
+            <li key={index}>
+              <NavLink
+                className={"capitalize"}
+                style={({ isActive }) => ({
+                  color: isActive ? colorsData.data.mainColor : "white",
+                  fontSize: "20px",
+                })}
+                to={carCategory.href}
+                end={true}
+              >
+                {t(carCategory.title)}{" "}
+              </NavLink>
+            </li>
+          ))}
         </ul>
         <Outlet />
       </Container>

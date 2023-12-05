@@ -1,0 +1,57 @@
+{
+  "languages": {
+    "en": "english",
+    "ar": "arabic"
+  },
+  "common": {
+    "home": "home",
+    "services": "services",
+    "cars": "cars",
+    "about": "about",
+    "rates": "rates",
+    "inquires": "inquires",
+    "currency": "AED",
+    "bookNow": "book now",
+    "findOutMore": "find out more",
+    "brand": "rally fleet"
+  },
+  "pages": {
+    "home": {
+      "rentCarBooking": {
+        "sectionHead": { "title": "booking", "desc": "book you car now!" },
+
+        "title": "easy car rental booking",
+        "desc": "Discover seamless car rental at your fingertips! With our user-friendly booking system, you can reserve standard cars or luxurious limousines in just a few clicks. Choose your vehicle, select dates, and book with confidence. Your next adventure begins here.",
+        "form": {
+          "pickUp": {
+            "location": " The Pick Up Location",
+            "date": " Date Of Pick Up"
+          },
+          "dropOff": {
+            "location": " The Drop Off Location",
+            "date": " Date Of Return"
+          },
+          "name": " Your Name",
+          "mailID": " Your Mail ID",
+          "submit": "Submit"
+        }
+      },
+
+      "ourClient": {
+        "sectionHead": { "title": "our clients", "desc": "our trusted clients" }
+      },
+      "cars": {
+        "sectionHead": { "title": "cars", "desc": "check our cars" },
+        "limo": "liom cars"
+      }
+    },
+    "cars": {
+      "limo": "liom cars",
+      "rentalCars": "rental cars",
+      "busRent": "bus rent"
+    },
+    "rates": {
+      "sectionHead": { "title": "our rates" }
+    }
+  }
+}

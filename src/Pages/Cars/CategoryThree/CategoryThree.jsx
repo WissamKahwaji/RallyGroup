@@ -6,7 +6,11 @@ import secondFont from "../../../SharedCSS/secondFont.module.css";
 import thirdFont from "../../../SharedCSS/thirdFont.module.css";
 import { useSelector } from "react-redux";
 import styles from "../../../SharedCSS/categoriesAnimation.module.css";
+import useSelectDataDependOnLang from "../../../Hooks/useSelectDataDependOnLang";
+
 const CategoryThree = () => {
+  const { handleSelectDataDependOnLang } = useSelectDataDependOnLang();
+
   const data = useRouteLoaderData("carsRoute");
   console.log(data);
   const colorsData = useSelector((state) => state.colorsSlice);
@@ -48,7 +52,7 @@ const CategoryThree = () => {
             <p
               className={`mb-2 text-lg ${thirdFont["third-font"]} text-center`}
             >
-              {ele.desc}
+              {handleSelectDataDependOnLang(ele, "desc")}
             </p>
             {/* {ele.carRate && (
               <ul
