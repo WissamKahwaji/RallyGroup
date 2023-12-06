@@ -18,10 +18,10 @@
   "pages": {
     "home": {
       "rentCarBooking": {
-        "sectionHead": { "title": "booking", "desc": "book you car now!" },
+        "sectionHead": { "title": "booking", "desc": "book your car now !" },
 
         "title": "easy car rental booking",
-        "desc": "Discover seamless car rental at your fingertips! With our user-friendly booking system, you can reserve standard cars or luxurious limousines in just a few clicks. Choose your vehicle, select dates, and book with confidence. Your next adventure begins here.",
+        "desc": "With our user-friendly booking system, you can reserve luxurious limousines in just a few clicks. Choose your vehicle, select dates, and book with confidence. Your next adventure begins here.",
         "form": {
           "pickUp": {
             "location": " The Pick Up Location",
@@ -42,11 +42,11 @@
       },
       "cars": {
         "sectionHead": { "title": "cars", "desc": "check our cars" },
-        "limo": "liom cars"
+        "limo": "limo cars"
       }
     },
     "cars": {
-      "limo": "liom cars",
+      "limo": "limo cars",
       "rentalCars": "rental cars",
       "busRent": "bus rent"
     },

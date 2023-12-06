@@ -30,7 +30,7 @@ const Booking = () => {
     color: colorsData.data.mainColor,
   };
   return (
-    <div id="bookNow" className={`md:flex md:h-screen md:flex-col`}>
+    <div id="bookNow" className={`md:flex  md:flex-col`}>
       <PageHeadingTitle
         title={t("pages.home.rentCarBooking.sectionHead.title")}
         desc={t("pages.home.rentCarBooking.sectionHead.desc")}
@@ -38,11 +38,11 @@ const Booking = () => {
       <div
         className={`mx-1 flex flex-1 flex-col gap-x-5 md:grid md:grid-cols-3`}
       >
-        <div className={`relative col-span-2 flex h-full w-full flex-col`}>
+        <div className={`relative col-span-2 flex  flex-col`}>
           <img
             src={homeData.data.landingImg}
             alt={homeData.data.brandName}
-            className={`relative left-0 top-0 h-full w-full rounded-lg object-cover`}
+            className={`relative left-0 top-0 aspect-auto rounded-lg object-cover`}
           />
           <span
             className={`absolute h-full w-full bg-black bg-opacity-50`}

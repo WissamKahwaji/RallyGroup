@@ -4,7 +4,6 @@ import secondFont from "../../SharedCSS/secondFont.module.css";
 import thirdFont from "../../SharedCSS/thirdFont.module.css";
 const LandingPage = () => {
   const homeData = useSelector((state) => state.homeSlice);
-  console.log(homeData);
   const imageContainerStyle = {
     position: "relative",
     height: "100vh", // Ensure the container takes the full viewport height
@@ -21,7 +20,6 @@ const LandingPage = () => {
           loop
           muted
           playsInline
-          controls
           className="  aspect-square  h-full w-full object-cover"
         >
           <source src={homeData.data.landingvideo} type="video/mp4" />
