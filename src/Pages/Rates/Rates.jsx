@@ -6,6 +6,7 @@ import thirdFont from "../../SharedCSS/thirdFont.module.css";
 import Container from "../../Components/UI/Container";
 import PageHeadingTitle from "../../Components/UI/PageHeadingTitle";
 import useSelectDataDependOnLang from "../../Hooks/useSelectDataDependOnLang";
+import RatesNotes from "../../Components/RatesNotes";
 
 const Rates = () => {
   const { handleSelectDataDependOnLang, t } = useSelectDataDependOnLang();
@@ -76,6 +77,7 @@ const Rates = () => {
             </li>
           ))}
         </ul>
+        <RatesNotes data={data.data} />
       </Container>
     </div>
   );

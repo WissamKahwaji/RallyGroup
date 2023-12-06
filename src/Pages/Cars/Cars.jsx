@@ -18,7 +18,7 @@ const Cars = () => {
   };
   const { pathname } = useLocation();
   const CARS_CATEGORIES = [
-    { title: "pages.cars.limo", href: "/" },
+    { title: "pages.cars.limo", href: "" },
     { title: "pages.cars.rentalCars", href: "categoryOne" },
     { title: "pages.cars.busRent", href: "categoryThree" },
   ];

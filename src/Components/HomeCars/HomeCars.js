@@ -69,7 +69,7 @@ const HomeCars = () => {
     <Container>
       <PageHeadingTitle
         title={t("pages.home.cars.sectionHead.title")}
-        desc={t("pages.home.cars.sectionHead.title")}
+        desc={" "}
       />
       <Link to="/cars" className={`mb-4 block text-center text-3xl underline`}>
         {t("common.findOutMore")}

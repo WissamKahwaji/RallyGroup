@@ -5,6 +5,7 @@ import Booking from "../../Components/Booking/Booking";
 import HomeCars from "../../Components/HomeCars/HomeCars";
 import OurClients from "../../Components/OurClients/OurClients";
 import { useLocation } from "react-router-dom";
+import Container from "../../Components/UI/Container";
 
 const Home = () => {
   // const { pathname } = useLocation();
@@ -28,10 +29,12 @@ const Home = () => {
   return (
     <>
       <LandingPage />
-      <Booking />
-      <OurServices />
-      <HomeCars />
-      <OurClients />
+      <Container>
+        <Booking />
+        <OurServices />
+        <HomeCars />
+        <OurClients />
+      </Container>
     </>
   );
 };

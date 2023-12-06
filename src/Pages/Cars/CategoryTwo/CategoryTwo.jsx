@@ -56,7 +56,7 @@ const CategoryTwo = () => {
               {ele.carRate.map((rate) => (
                 <li key={rate._id}>
                   <Link to={"/"} state={{ scrollToSection: "bookNow" }}>
-                    <div className="flex flex-row gap-3  pb-1  md:text-xl">
+                    <div className="flex flex-row gap-3  pb-1  md:text-lg">
                       <p>{handleSelectDataDependOnLang(rate, "title")}</p>
                       <p className="flex gap-1">
                         <span>{rate.price}</span>
@@ -67,36 +67,6 @@ const CategoryTwo = () => {
                 </li>
               ))}
             </ul>
-            {/* <p
-              className={`text-lg mb-2 ${thirdFont["third-font"]} text-center`}
-            >
-              {ele.desc}
-            </p> */}
-            {/* {ele.carRate && (
-              <ul
-                style={dailyRatesStyle}
-                className={` flex justify-between items-center flex-col mt-5 md:flex-row w-full p-2 rounded-md`}
-              >
-                <li>
-                  <span className={`text-lg`}>Daily : </span>
-                  <span>{ele.carRate.daily} AED</span>
-                </li>
-                <li>
-                  <span className={`text-lg`}>Weekly : </span>
-                  <span>{ele.carRate.weekly} AED</span>
-                </li>
-                <li>
-                  <span className={`text-lg`}>Monthly : </span>
-                  <span>{ele.carRate.monthly} AED</span>
-                </li>
-              </ul>
-            )}
-            <button
-              className={`px-4 py-1 mt-10 rounded-2xl text-2xl mr-2`}
-              style={buttonOneStyle}
-            >
-              Book Now
-            </button> */}
           </div>
         </li>
       ))}

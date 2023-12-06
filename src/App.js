@@ -1,24 +1,33 @@
-import React from "react";
+import React, { Suspense, lazy } from "react";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import Root, { rootLoader } from "./Pages/Root";
 import { baseURL } from "./API/BaseURL";
 import useApiFetch from "./Hooks/useApiFetch";
 import { colorsActions } from "./Store/colorsSlice";
 import { homeActions } from "./Store/homeSlice";
-import Home from "./Pages/Home/Home";
 import { servicesActions } from "./Store/servicesSlice";
-import Cars, { carsLoader } from "./Pages/Cars/Cars";
+import { carsLoader } from "./Pages/Cars/Cars";
 import { contactActions } from "./Store/contactSlice";
-import Services, { servicesLoader } from "./Pages/Services/Services";
+import { servicesLoader } from "./Pages/Services/Services";
 import { carActions } from "./Store/carSlice";
-import Rates, { ratesLoader } from "./Pages/Rates/Rates";
+import { ratesLoader } from "./Pages/Rates/Rates";
 import { ourClientsActions } from "./Store/ourClientsSlice";
-import CategoryTwo from "./Pages/Cars/CategoryTwo/CategoryTwo";
-import CategoryOne from "./Pages/Cars/CategoryOne/CategoryOne";
-import About, { aboutLoader } from "./Pages/About/About";
+import { aboutLoader } from "./Pages/About/About";
+import { enquiriesLoader } from "./Pages/Enquiries";
 import LoadingPage from "./Pages/LoadingPage/LoadingPage";
-import Booking from "./Components/Booking/Booking";
-import CategoryThree from "./Pages/Cars/CategoryThree/CategoryThree";
+import { enquiresFormAction } from "./Components/EnqueriesForm";
+const Home = lazy(() => import("./Pages/Home/Home"));
+const Services = lazy(() => import("./Pages/Services/Services"));
+const Rates = lazy(() => import("./Pages/Rates/Rates"));
+const Cars = lazy(() => import("./Pages/Cars/Cars"));
+const CategoryOne = lazy(() => import("./Pages/Cars/CategoryOne/CategoryOne"));
+
+const CategoryTwo = lazy(() => import("./Pages/Cars/CategoryTwo/CategoryTwo"));
+const CategoryThree = lazy(
+  () => import("./Pages/Cars/CategoryThree/CategoryThree"),
+);
+const About = lazy(() => import("./Pages/About/About"));
+const Enquiries = lazy(() => import("./Pages/Enquiries"));
 
 const App = () => {
   const router = createBrowserRouter([
@@ -67,6 +76,12 @@ const App = () => {
           element: <About />,
           loader: aboutLoader,
         },
+        {
+          path: "/enquiries",
+          element: <Enquiries />,
+          loader: enquiriesLoader,
+          action: enquiresFormAction,
+        },
       ],
     },
   ]);
@@ -95,7 +110,11 @@ const App = () => {
     ourClientsActions.storeOurClients,
   );
 
-  return <RouterProvider router={router} />;
+  return (
+    <Suspense fallback={<LoadingPage />}>
+      <RouterProvider router={router} />;
+    </Suspense>
+  );
 };
 
 export default App;

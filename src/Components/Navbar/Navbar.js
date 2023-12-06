@@ -4,13 +4,14 @@ import { RxHamburgerMenu } from "react-icons/rx";
 import { useTranslation } from "react-i18next";
 import Container from "../UI/Container";
 import Navigation from "../Navigation/Navigation";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import useNavigateToBook from "../../Hooks/useNavigateToBook";
 import SelectLang from "../UI/SelectLang";
 import { NAV_LINKS } from "../../constant/navLinks";
 
 const Navbar = ({ data }) => {
   const { t } = useTranslation();
+  const navigate = useNavigate();
   const colorsData = useSelector((state) => state.colorsSlice);
   const handleNavigateToBookSection = useNavigateToBook();
   console.log(colorsData);
@@ -37,7 +38,7 @@ const Navbar = ({ data }) => {
   }, [location]);
 
   return (
-    <nav className={`fixed top-0 z-50 w-full rounded-b-md backdrop-blur-md`}>
+    <nav className={`fixed top-0 z-50 w-full  bg-black/70 backdrop-blur-md`}>
       <Navigation onClick={navigationCloseHandler} isShowing={isShowing} />
 
       <Container className={`flex items-center justify-between`}>
@@ -50,22 +51,23 @@ const Navbar = ({ data }) => {
         </Link>
         <div className={`hidden gap-5 md:flex`}>
           {NAV_LINKS.map((link) => (
-            <Link className="text-2xl capitalize " to={link.href}>
+            <Link className="text-xl capitalize " to={link.href}>
               {t(link.title)}
             </Link>
           ))}
         </div>
         <div className={`hidden flex-row gap-2 md:flex`}>
           <button
-            className={` rounded-2xl px-4 py-1 text-2xl`}
+            className={` rounded-2xl px-4 py-1 text-xl`}
             style={buttonOneStyle}
             onClick={handleNavigateToBookSection}
           >
             {t("common.bookNow")}
           </button>
           <button
-            className={`rounded-2xl px-4 py-1 text-2xl capitalize`}
+            className={`rounded-2xl px-4 py-1 text-xl capitalize`}
             style={buttonTwoStyle}
+            onClick={() => navigate("/cars")}
           >
             {t("common.brand")}
           </button>

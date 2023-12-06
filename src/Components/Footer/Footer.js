@@ -97,7 +97,8 @@ const Footer = () => {
                   )}
                 </h5>
                 <span>{contactData.data.content.emailOne}</span>
-                <span
+                <p
+                  dir="ltr"
                   style={{
                     whiteSpace: "nowrap",
                     fontFeatureSettings: '"tnum"',
@@ -108,7 +109,7 @@ const Footer = () => {
                     /(\d{3})(\d{3})(\d{3})/,
                     "$1 $2 $3",
                   )}
-                </span>
+                </p>
               </div>
               <div className={`my-1 flex flex-col items-center`}>
                 <h5>
@@ -118,7 +119,8 @@ const Footer = () => {
                   )}
                 </h5>
                 <span>{contactData.data.content.emailTwo}</span>
-                <span
+                <p
+                  dir="ltr"
                   style={{
                     whiteSpace: "nowrap",
                     fontFeatureSettings: '"tnum"',
@@ -129,7 +131,7 @@ const Footer = () => {
                     /(\d{3})(\d{3})(\d{3})/,
                     "$1 $2 $3",
                   )}
-                </span>
+                </p>
               </div>
             </div>
           </div>

@@ -10,10 +10,10 @@ const PageHeadingTitle = ({ title, desc, className }) => {
     WebkitBackgroundClip: "text", // Use WebkitBackgroundClip instead of -webkit-background-clip
   };
   return (
-    <div className={`mb-5 mt-5 text-center md:mb-10 md:mt-10 ${className}`}>
+    <div className={`my-5 text-center md:my-10  ${className}`}>
       <h2
         style={headingTitleStyle}
-        className={`mb-1 text-2xl font-semibold md:mb-4  md:text-5xl ${secondFont["second-font"]}`}
+        className={`mb-1 text-2xl font-semibold capitalize md:mb-4  md:text-5xl ${secondFont["second-font"]}`}
       >
         {title}
       </h2>

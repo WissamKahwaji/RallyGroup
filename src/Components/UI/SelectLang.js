@@ -23,7 +23,7 @@ const SelectLang = () => {
     <div>
       <select
         style={selectStyle}
-        className=" rounded-xl bg-transparent px-1 py-1  outline-none sm:px-2 sm:text-xl md:rounded-2xl md:px-4 md:text-2xl"
+        className=" rounded-xl bg-transparent px-1 py-1  outline-none sm:px-2 sm:text-lg md:rounded-2xl md:px-4 md:text-xl"
         value={i18n.language}
         onChange={handleChangeLanguage}
       >

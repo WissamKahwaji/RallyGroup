@@ -32,12 +32,12 @@
             "date": " Date Of Return"
           },
           "name": " Your Name",
-          "mailID": " Your Mail ID",
+          "email": " Email",
           "submit": "Submit"
         }
       },
 
-      "ourClient": {
+      "ourClients": {
         "sectionHead": { "title": "our clients", "desc": "our trusted clients" }
       },
       "cars": {
@@ -52,6 +52,13 @@
     },
     "rates": {
       "sectionHead": { "title": "our rates" }
+    },
+    "enquiries": {
+      "form": {
+        "fullName": "full name",
+        "email": " email",
+        "message": "message"
+      }
     }
   }
 }

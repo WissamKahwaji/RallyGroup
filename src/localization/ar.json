@@ -1,6 +1,6 @@
 {
   "languages": {
-    "en": "إنكليزي",
+    "en": "انجليزي",
     "ar": "عربي"
   },
   "common": {
@@ -25,7 +25,7 @@
           "pickUp": { "location": "موقع الإستلام", "date": "تاريخ الإستلام" },
           "dropOff": { "location": "موقع التسليم", "date": "تاريخ التسليم" },
           "name": "الإسم",
-          "mailID": "mail id",
+          "email": "البريد الإلكتروني",
           "submit": "إرسال"
         }
       },
@@ -44,6 +44,13 @@
     },
     "rates": {
       "sectionHead": { "title": "الاسعار" }
+    },
+    "enquiries": {
+      "form": {
+        "fullName": "الاسم",
+        "email": " البريد الإلكتروني",
+        "message": "الرسالة"
+      }
     }
   }
 }

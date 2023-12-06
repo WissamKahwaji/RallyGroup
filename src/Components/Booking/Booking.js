@@ -24,7 +24,7 @@ const Booking = () => {
   };
   console.log(heavyLineStyle);
   const submitStyle = {
-    border: `1px solid ${colorsData.data.mainColor}`,
+    background: colorsData.data.mainColor,
   };
   const bookingTitleStyle = {
     color: colorsData.data.mainColor,
@@ -66,41 +66,46 @@ const Booking = () => {
         <div>
           <Form
             method="post"
-            className={`m-2 mt-5 grid h-full grid-cols-1 gap-5 rounded-lg p-4 shadow-[0px_0px_5px_1px_#D9A82E] md:m-0 md:mr-5`}
+            className={`m-2 mt-5  h-full  rounded-lg p-4  md:m-0 md:mr-5`}
           >
-            <Input
-              input={{
-                title: t("pages.home.rentCarBooking.form.pickUp.location"),
-                type: "text",
-              }}
-            />
-            <Input
-              input={{
-                title: t("pages.home.rentCarBooking.form.dropOff.location"),
-                type: "text",
-              }}
-            />
-            <DateTimePicker
-              label={t("pages.home.rentCarBooking.form.pickUp.date")}
-            />
-            <DateTimePicker
-              label={t("pages.home.rentCarBooking.form.dropOff.date")}
-            />
+            <div className="grid grid-cols-1 gap-5">
+              <Input
+                input={{
+                  title: t("pages.home.rentCarBooking.form.pickUp.location"),
+                  type: "text",
+                }}
+              />
+              <Input
+                input={{
+                  title: t("pages.home.rentCarBooking.form.dropOff.location"),
+                  type: "text",
+                }}
+              />
+              <DateTimePicker
+                label={t("pages.home.rentCarBooking.form.pickUp.date")}
+              />
+              <DateTimePicker
+                label={t("pages.home.rentCarBooking.form.dropOff.date")}
+              />
 
-            {/* <Input/> */}
-            <Input
-              input={{
-                title: t("pages.home.rentCarBooking.form.name"),
-                type: "text",
-              }}
-            />
-            <Input
-              input={{
-                title: t("pages.home.rentCarBooking.form.mailID"),
-                type: "text",
-              }}
-            />
-            <button style={submitStyle} className={`rounded-md p-1`}>
+              {/* <Input/> */}
+              <Input
+                input={{
+                  title: t("pages.home.rentCarBooking.form.name"),
+                  type: "text",
+                }}
+              />
+              <Input
+                input={{
+                  title: t("pages.home.rentCarBooking.form.email"),
+                  type: "text",
+                }}
+              />
+            </div>
+            <button
+              style={submitStyle}
+              className={"mt-4 rounded-md  px-3 py-1"}
+            >
               {t("pages.home.rentCarBooking.form.submit")}
             </button>
           </Form>

@@ -9,3 +9,10 @@ body {
   margin: 0;
   font-family: "Roboto Slab", serif;
 }
+.video-container video::-webkit-media-controls {
+  display: none !important;
+}
+
+.video-container video::-webkit-media-controls-enclosure {
+  display: none !important;
+}
