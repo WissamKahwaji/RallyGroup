@@ -19,6 +19,7 @@ const Input = ({ input }) => {
       </label>
       <input
         {...input}
+        required
         style={inputStyle}
         className={`rounded-md bg-transparent p-1 outline-none`}
       />

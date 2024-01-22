@@ -33,7 +33,8 @@
           },
           "name": " Your Name",
           "email": " Email",
-          "submit": "Submit"
+          "submit": "Submit",
+          "mobile_number": "Mobile Number"
         }
       },
 

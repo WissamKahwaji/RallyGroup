@@ -26,7 +26,8 @@
           "dropOff": { "location": "موقع التسليم", "date": "تاريخ التسليم" },
           "name": "الإسم",
           "email": "البريد الإلكتروني",
-          "submit": "إرسال"
+          "submit": "إرسال",
+          "mobile_number": "رقم الجوال"
         }
       },
       "ourClients": {

@@ -3,6 +3,9 @@ import { useSelector } from "react-redux";
 import Container from "../UI/Container";
 import secondFont from "../../SharedCSS/secondFont.module.css";
 import thirdFont from "../../SharedCSS/thirdFont.module.css";
+import { MapContainer, Marker, Popup, TileLayer } from "react-leaflet";
+import "leaflet/dist/leaflet.css";
+import { Icon } from "leaflet";
 import {
   AiOutlineFacebook,
   AiOutlineInstagram,
@@ -14,7 +17,7 @@ import {
 import { FaXTwitter } from "react-icons/fa6";
 import { Link } from "react-router-dom";
 import { BsWhatsapp } from "react-icons/bs";
-import { FOOTER_NAV_LINKS } from "../../constant/navLinks";
+import { FOOTER_NAV_LINKS, MAP_INDICATOR_ICON } from "../../constant/navLinks";
 import { useTranslation } from "react-i18next";
 import useSelectDataDependOnLang from "../../Hooks/useSelectDataDependOnLang";
 
@@ -191,6 +194,34 @@ const Footer = () => {
             {homeData.data.brandDesc}
           </p>
         </div>
+      </div>
+      <div className=" m-auto w-1/2">
+        <MapContainer
+          key="pathname"
+          className="aspect-video h-full w-full"
+          center={[Number(25.18527714295704), Number(55.26207377231094)]}
+          zoom={13}
+          scrollWheelZoom={false}
+        >
+          <TileLayer
+            attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+            url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+          />
+          <Marker
+            icon={MAP_INDICATOR_ICON}
+            position={[Number(25.18527714295704), Number(55.26207377231094)]}
+          >
+            <Popup>
+              <a
+                target="_blank"
+                rel="noreferrer"
+                href="https://linkprotect.cudasvc.com/url?a=https%3a%2f%2fmaps.app.goo.gl%2fKyQMZ3uvtuV3eiWe7&c=E,1,35zYXQzWgfkE6XOU5OAkISfOCFHp3q2zfWMtJ2YyH-2Ei6dIxkclo1A8T0i38VYePGo7vSf2UeGu_KP_iXY_SeRQjAF32Yiwym9tejgZ_SE,&typo=1"
+              >
+                {"Rally Group"}
+              </a>
+            </Popup>
+          </Marker>
+        </MapContainer>
       </div>
     </Container>
   );

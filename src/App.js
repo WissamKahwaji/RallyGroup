@@ -16,6 +16,7 @@ import { aboutLoader } from "./Pages/About/About";
 import { enquiriesLoader } from "./Pages/Enquiries";
 import LoadingPage from "./Pages/LoadingPage/LoadingPage";
 import { enquiresFormAction } from "./Components/EnqueriesForm";
+import { bookingLoader } from "./Components/Booking/Booking";
 const Home = lazy(() => import("./Pages/Home/Home"));
 const Services = lazy(() => import("./Pages/Services/Services"));
 const Rates = lazy(() => import("./Pages/Rates/Rates"));
