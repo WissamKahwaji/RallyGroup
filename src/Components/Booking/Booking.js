@@ -20,6 +20,7 @@ const Booking = () => {
     fullName: "",
     email: "",
     mobile: "",
+    reservationDate: new Date(),
   });
 
   const [selectedDuration, setSelectedDuration] = useState("1"); // Default duration value (1 day)
@@ -47,7 +48,7 @@ const Booking = () => {
     event.preventDefault();
 
     try {
-      const response = await fetch(`${baseURL}/bookings/send-email`, {
+      const response = await fetch(`${baseURL}/bookings/add`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

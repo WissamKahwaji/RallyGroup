@@ -20,6 +20,7 @@ const EnquiriesBookingForm = () => {
     fullName: "",
     email: "",
     mobile: "",
+    reservationDate: new Date(),
   });
 
   const [selectedDuration, setSelectedDuration] = useState("1"); 
@@ -28,7 +29,7 @@ const EnquiriesBookingForm = () => {
     event.preventDefault();
 
     try {
-      const response = await fetch(`${baseURL}/bookings/send-email`, {
+      const response = await fetch(`${baseURL}/bookings/add`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
